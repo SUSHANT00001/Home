@@ -11,12 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const milkQuantity = document.getElementById("milkQuantity").value;
-        const dateTime = document.getElementById("dateTime").value;
+        const dateTime = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
         const pricePerUnit = document.getElementById("pricePerUnit").value;
 
         const newItem = {
             milkQuantity,
-            dateTime,
+            date,
+            time,
             pricePerUnit,
         };
 
@@ -33,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             row.innerHTML = `
                 <td>${item.milkQuantity}</td>
-                <td>${item.dateTime}</td>
+                <td>${item.date}</td>
+                 <td>${item.time}</td>
                 <td>${item.pricePerUnit}</td>
                 <td class="actions">
                     <button onclick="deleteItem(${index})">Delete</button>
