@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Store Inventory</title>
+    <link rel="stylesheet" href="milk.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Milk Store Inventory</h1>
+        <form id="inventoryForm">
+            <input type="text" placeholder="Milk in litter" id="milkQuantity" required>
+            <input type="date" id="dateTime" required>
+            <input type="text" placeholder="Price (per unit)" id="pricePerUnit" required>
+            <button type="submit">Add to Inventory</button>
+        </form>
+        <button id="saveInventory">Save Inventory</button>
+        <button id="viewInventory">View Previous Inventory</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Milk in litters</th>
+                    <th>Date and Time</th>
+                    <th>Price (per unit)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryTable">
+                <!-- Inventory items will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <script src="milk.js"></script>
+</body>
+</html>
