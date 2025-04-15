@@ -11,14 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const milkQuantity = document.getElementById("milkQuantity").value;
-        const dateTime = document.getElementById("date").value;
+        const date = document.getElementById("date").value;
         const time = document.getElementById("time").value;
         const pricePerUnit = document.getElementById("pricePerUnit").value;
+
+        // Format time to include AM/PM
+        const formattedTime = formatTime(time);
 
         const newItem = {
             milkQuantity,
             date,
-            time,
+            time: formattedTime,
             pricePerUnit,
         };
 
@@ -26,6 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTable();
         inventoryForm.reset();
     });
+
+    // Function to format time with AM/PM
+    function formatTime(time) {
+        const [hours, minutes] = time.split(":").map(Number);
+        const period = hours >= 12 ? "PM" : "AM";
+        const formattedHours = hours % 12 || 12; // Convert 24-hour format to 12-hour format
+        return `${formattedHours}:${minutes < 10 ? "0" + minutes : minutes} ${period}`;
+    }
 
     // Update inventory table
     function updateTable() {
@@ -36,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.innerHTML = `
                 <td>${item.milkQuantity}</td>
                 <td>${item.date}</td>
-                 <td>${item.time}</td>
+                <td>${item.time}</td>
                 <td>${item.pricePerUnit}</td>
                 <td class="actions">
                     <button onclick="deleteItem(${index})">Delete</button>
